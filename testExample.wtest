@@ -1,9 +1,38 @@
-import example.pepita
+import plagas.*
 
-describe "group of tests for pepita" {
+describe "plagas" {
+   const casa1 = new Hogar (nivelDeMugre=1,confortQueOfrece=200)
+   
 
   test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+    assert.that(casa1.esBueno())
+  }
+}
+
+describe "parte2" {
+
+  const casa2 = new Hogar(
+    nivelDeMugre = 100,
+    confortQueOfrece = 200
+  )
+
+  const casa3 = new Hogar(
+    nivelDeMugre = 100,
+    confortQueOfrece = 100
+  )
+
+  const huerta1 = new Huerta(
+    capacidadDeProduccion = 100,
+    nivel = 50
+  )
+
+  const barrio1 = new Barrio(elementos = [])
+
+  method initialize() {
+    barrio1.agregarTodos([casa2, casa3, huerta1])
   }
 
+  test "el barrio es copado" {
+    assert.that(barrio1.esCopado())
+  }
 }
